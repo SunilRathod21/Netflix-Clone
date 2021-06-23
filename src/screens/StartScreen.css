@@ -1,0 +1,105 @@
+.startScreen {
+  position: relative;
+  height: 100%;
+  background-image: url("https://i.pinimg.com/originals/41/6a/7f/416a7fd4720a3c0dbd38c17f3ac8e0c1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.startScreen__gradient {
+  width: 100%;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8)
+  );
+}
+
+.startScreen__logo {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  width: 15rem;
+  object-fit: contain;
+  padding-left: 2rem;
+}
+
+.startScreen__button {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #e50914;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.startScreen__body {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  width: 70%;
+
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  padding: 2rem;
+}
+
+.startScreen__body > h1 {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+.startScreen__body > h2 {
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.startScreen__body > h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.startScreen__input {
+  margin: 2rem;
+}
+
+.startScreen__input > form > input {
+  padding: 1rem;
+  outline-width: 0;
+  height: 5rem;
+  border: none;
+  width: 60%;
+  max-width: 60rem;
+}
+
+.startScreen__getStarted {
+  margin-top: 1rem;
+  padding: 1.6rem 2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #e50914;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .startScreen__body {
+    width: 100%;
+    padding: 0;
+  }
+}

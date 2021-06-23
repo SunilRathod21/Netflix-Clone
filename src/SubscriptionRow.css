@@ -1,0 +1,32 @@
+.subscriptionRow {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subscriptionRow__info > h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subscriptionRow__info > p {
+  font-size: 1.3rem;
+}
+
+.subscriptionRow > button {
+  top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #e50914;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .subscriptionRow > button {
+    padding: 0.5rem 1rem;
+  }
+}

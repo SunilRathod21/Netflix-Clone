@@ -1,0 +1,47 @@
+.videoPlayer__info {
+  padding: 3rem 16rem;
+  margin-bottom: 1rem;
+}
+
+.videoPlayer__info > h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  padding-bottom: 1rem;
+  margin-left: -3.2rem;
+}
+
+.videoPlayer__info > p {
+  color: #757575;
+  font-size: 1.5rem;
+}
+
+.videoPlayer__icons {
+  margin-top: 5rem;
+  display: flex;
+  width: 16rem;
+  justify-content: space-between;
+  align-items: center;
+  color: #757575 !important;
+}
+
+.videoPlayer__icons > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem !important;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.videoPlayer__icons > div:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .videoPlayer__info {
+    padding: 3rem 5rem;
+  }
+}
