@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import FAQAccodinon from "../FAQAccodinon";
-import Footer from "../Footer";
-import Jumbotron from "../Jumbotron";
+import FAQAccodinon from "../Components/FAQAccodinon";
+import Footer from "../Components/Footer";
+import Jumbotron from "../Components/Jumbotron";
 import "./StartScreen.css";
 import AuthScreen from "./AuthScreen";
 import { useHistory } from "react-router-dom";

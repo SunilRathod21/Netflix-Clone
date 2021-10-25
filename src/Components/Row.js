@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import axios from "./axios";
-import { setVideo } from "./features/videoSlice";
+import axios from "../axios";
+import { setVideo } from "../features/videoSlice";
 import "./Row.css";
 
 function Row({ title, fetchUrl, isLargeRow = false }) {

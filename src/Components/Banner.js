@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Banner.css";
-import requests from "./Requests";
-import axios from "./axios";
+import requests from "../Requests";
+import axios from "../axios";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { setVideo } from "./features/videoSlice";
+import { setVideo } from "../features/videoSlice";
 function Banner() {
   const [movie, setMovie] = useState([]);
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { selectUser } from "../features/userSlice";
 import { auth } from "../firebase";
-import Nav from "../Nav";
-import SubscriptionRow from "../SubscriptionRow";
+import Nav from "../Components/Nav";
+import SubscriptionRow from "../Components/SubscriptionRow";
 import "./ProfileScreen.css";
 function ProfileScreen() {
   const user = useSelector(selectUser);

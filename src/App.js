@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileScreen from "./screens/ProfileScreen";
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "./screens/VideoPlayer";
 
 function App() {
   const user = useSelector(selectUser);

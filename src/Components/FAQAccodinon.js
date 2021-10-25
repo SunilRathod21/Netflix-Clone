@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { data } from "./FAQData";
+import { data } from "../FAQData";
 import "./FAQAccordion.css";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";

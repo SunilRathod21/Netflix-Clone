@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectVideo } from "./features/videoSlice";
+import { selectVideo } from "../features/videoSlice";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import AddIcon from "@material-ui/icons/Add";
 import ShareIcon from "@material-ui/icons/Share";
-import Nav from "./Nav";
+import Nav from "../Components/Nav";
 import "./VideoPlayer.css";
-import Footer from "./Footer";
+import Footer from "../Components/Footer";
 function VideoPlayer() {
   const [trailerUrl, setTrailerUrl] = useState("");
   const movie = useSelector(selectVideo);
