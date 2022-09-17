@@ -9,54 +9,54 @@ import Nav from "../Components/Nav";
 import "./VideoPlayer.css";
 import Footer from "../Components/Footer";
 function VideoPlayer() {
-  const [trailerUrl, setTrailerUrl] = useState("");
-  const movie = useSelector(selectVideo);
+	const [trailerUrl, setTrailerUrl] = useState("");
+	const movie = useSelector(selectVideo);
 
-  useEffect(() => {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      (async () => {
-        try {
-          const url = await movieTrailer(movie?.name || "");
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-        } catch (err) {
-          console.log(err);
-        }
-      })();
-    }
-  }, [movie]);
+	useEffect(() => {
+		// if (trailerUrl) {
+		//   setTrailerUrl("");
+		// } else {
+		(async () => {
+			try {
+				const url = await movieTrailer(movie?.name || "");
+				const urlParams = new URLSearchParams(new URL(url).search);
+				setTrailerUrl(urlParams.get("v"));
+			} catch (err) {
+				console.log(err);
+			}
+		})();
+		// }
+	}, [movie]);
 
-  const opts = {
-    height: "500px",
-    width: "100%",
-    playerVars: {
-      autoplay: 1,
-    },
-  };
+	const opts = {
+		height: "500px",
+		width: "100%",
+		playerVars: {
+			autoplay: 1,
+		},
+	};
 
-  return (
-    <div className="videoPlayer">
-      <Nav />
-      {trailerUrl ? <YouTube videoId={trailerUrl} opts={opts} /> : ""}
-      <div className="videoPlayer__info">
-        <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
-        <p>{movie?.overview}</p>
-        <div className="videoPlayer__icons">
-          <div>
-            <AddIcon />
-            <p>Watchlist</p>
-          </div>
-          <div>
-            <ShareIcon />
-            <p>Share</p>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+	return (
+		<div className="videoPlayer">
+			<Nav />
+			{trailerUrl ? <YouTube videoId={trailerUrl} opts={opts} /> : ""}
+			<div className="videoPlayer__info">
+				<h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+				<p>{movie?.overview}</p>
+				<div className="videoPlayer__icons">
+					<div>
+						<AddIcon />
+						<p>Watchlist</p>
+					</div>
+					<div>
+						<ShareIcon />
+						<p>Share</p>
+					</div>
+				</div>
+			</div>
+			<Footer />
+		</div>
+	);
 }
 
 export default VideoPlayer;
