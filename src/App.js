@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo, useState } from "react";
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,48 +10,75 @@ import ProfileScreen from "./screens/ProfileScreen";
 import VideoPlayer from "./screens/VideoPlayer";
 
 function App() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+	const user = useSelector(selectUser);
+	const dispatch = useDispatch();
+	const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        //logged in
-        dispatch(
-          login({
-            uid: userAuth.uid,
-            email: userAuth.email,
-          })
-        );
-      } else {
-        //Logged out
-        dispatch(logout());
-      }
-    });
-    return unsubscribe;
-  }, [dispatch]);
+	useEffect(() => {
+		const fetchUser = () => {
+			try {
+				setLoading(true);
+				console.time();
+				const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+					if (userAuth) {
+						//logged in
+						dispatch(
+							login({
+								uid: userAuth.uid,
+								email: userAuth.email,
+							})
+						);
+					} else {
+						//Logged out
+						dispatch(logout());
+					}
+				});
+				return unsubscribe;
+			} catch (err) {
+				console.log(err);
+			} finally {
+				setLoading(false);
+				console.timeEnd();
+			}
+		};
+		fetchUser();
+	}, [dispatch]);
 
-  return (
-    <div className="app">
-      <Router>
-        {!user ? (
-          <StartScreen />
-        ) : (
-          <Switch>
-            <Route path="/" exact>
-              <HomeScreen />
-            </Route>
-            <Route path="/videoPlayer" exact>
-              <VideoPlayer />
-            </Route>
-            <Route path="/profile" exact>
-              <ProfileScreen />
-            </Route>
-          </Switch>
-        )}
-      </Router>
-    </div>
-  );
+	return (
+		<div className="app">
+			{loading ? (
+				<div
+					style={{
+						position: "fixed",
+						height: "100vh",
+						width: "100vw",
+						background: "red",
+						zIndex: 1000,
+					}}
+				>
+					loading
+				</div>
+			) : (
+				<Router>
+					{!user ? (
+						<StartScreen />
+					) : (
+						<Switch>
+							<Route path="/" exact>
+								<HomeScreen />
+							</Route>
+							<Route path="/videoPlayer" exact>
+								<VideoPlayer />
+							</Route>
+							<Route path="/profile" exact>
+								<ProfileScreen />
+							</Route>
+						</Switch>
+					)}
+				</Router>
+			)}
+		</div>
+	);
 }
 
-export default App;
+export default memo(App);

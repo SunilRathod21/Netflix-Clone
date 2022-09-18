@@ -5,20 +5,28 @@ import axios from "../axios";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setVideo } from "../features/videoSlice";
+import Loader from "./loader/Loader";
 function Banner() {
 	const [movie, setMovie] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
-
+	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		const fetchData = async () => {
-			const request = await axios.get(requests.fetchNetflixOriginals);
-			setMovie(
-				request.data.results[
-					Math.floor(Math.random() * request.data.results.length - 1)
-				]
-			);
-			return request;
+			try {
+				setLoading(true);
+				const request = await axios.get(requests.fetchNetflixOriginals);
+				setMovie(
+					request.data.results[
+						Math.floor(Math.random() * request.data.results.length - 1)
+					]
+				);
+				return request;
+			} catch (err) {
+				console.log(err);
+			} finally {
+				setLoading(false);
+			}
 		};
 		fetchData();
 	}, []);
@@ -26,7 +34,9 @@ function Banner() {
 	const truncate = (str, n) => {
 		return str?.length > n ? str.substr(0, n - 1) + "..." : str;
 	};
-	return (
+	return loading ? (
+		<Loader />
+	) : (
 		<header
 			className="banner"
 			style={{
